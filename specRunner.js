@@ -1,0 +1,1 @@
+require('./spec/bobs_bagels.spec');
