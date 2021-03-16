@@ -1,6 +1,6 @@
-const assertEquals = require('./../test_framework');
-const Bagel = require('./../src/bagel');
-const Basket = require('./../src/basket');
+const assertEquals = require('../assertEquals');
+const Bagel = require('../src/bagel');
+const Basket = require('../src/basket');
 
 let bagel, userBasket, result;
 
