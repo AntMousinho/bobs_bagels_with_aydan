@@ -1,6 +1,9 @@
 const assertEquals = require('../testCode/assertEquals');
 const Bagel = require('../src/bagel');
 const Basket = require('../src/basket');
+const Menu = require('../src/menu');
+
+const test = require('mousinho-testlibrary-mse-2103/src/library');
 
 let bagel, bagel2, bagel3, bagel4, userBasket, result;
 
@@ -94,7 +97,7 @@ userBasket.addItem(bagel);
 userBasket.addItem(bagel);
 
 //Verify
-result = assertEquals(userBasket.items.length, 2);
+result = assertEquals(userBasket.items.length, 1);
 console.log(result);
 
 
@@ -127,3 +130,14 @@ userBasket.removeItem(bagel3);
 result = assertEquals(userBasket.subtotal, 18);
 console.log(result);
 
+
+test.describe(`Testing the Menu.addItem() function`, () => {
+    test.it('check that an item has been added', () => {
+        let bobsMenu = new Menu('bobs bagels');
+        bagel = new Bagel('BGLO');
+
+        result = bobsMenu.addToMenu(bagel);
+
+        test.expect(result.length).toEqual(1);
+    })
+})
