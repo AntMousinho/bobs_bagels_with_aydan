@@ -1,9 +1,7 @@
-const { isExportDefaultDeclaration } = require("@babel/types");
-
 class Basket {
-    constructor(itemLimit = 2) {
+    constructor(capacity = 2) {
         this._items = []
-        this._itemLimit = itemLimit;
+        this._capacity = capacity;
         this._subtotal = 0;
     }
 
@@ -16,14 +14,20 @@ class Basket {
     }
 
     isFull() {
-        return this.items.length >= this._itemLimit;
+        return this.items.length >= this._capacity;
     }
+
+
 
     addItem(item) {
         if(!this.isFull()) {
-            this._items.push(item);
-            this._subtotal += item.price;
-            return `${item.name} - ${item.price} - added to basket`;
+            if(this._items.includes(item)) {
+                return `${item.name} is already in basket, cannot be added again`
+            }else {
+                this._items.push(item);
+                this._subtotal += item.price;
+                return `${item.name} - ${item.price} - added to basket`;
+            }
         } else {
             return `Cannot add ${item.name}, basket is full`;
         }
