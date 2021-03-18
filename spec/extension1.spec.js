@@ -7,7 +7,7 @@ const test = require('mousinho-testlibrary-mse-2103/src/library');
 
 let bagel, bagel2, bagel3, bagel4, userBasket, result, bobsMenu;
 
-
+// User Story 1
 test.describe(`Testing the Menu.addItem() function`, () => {
     test.it('check that an item has been added', () => {
         bobsMenu = new Menu('bobs bagels');
@@ -26,6 +26,7 @@ test.describe(`Testing the Menu.addItem() function`, () => {
     })
 })
 
+// User Story 2
 test.describe('Testing print menu function', () => {
     test.it('Check that item in the menu is printed', () => {
         bobsMenu = new Menu('bobs bagels');
@@ -45,7 +46,6 @@ test.describe('Testing print menu function', () => {
         bobsMenu.addToMenu(bagel3)
 
         result = bobsMenu.printMenu();
-        console.log(result);
         test.expect(result).toEqual(`BOBS BAGELS MENU\n${bagel.SKU} - ${bagel.name} - ${bagel.price}\n${bagel2.SKU} - ${bagel2.name} - ${bagel2.price}\n${bagel3.SKU} - ${bagel3.name} - ${bagel3.price}`)
     })
 
@@ -55,5 +55,25 @@ test.describe('Testing print menu function', () => {
         result = bobsMenu.printMenu();
         
         test.expect(result).toEqual(`Sorry! There are no items on the menu`);
+    })
+})
+
+
+// User Story 3
+test.describe('Testing menu.removeItem() functnon', () => {
+    test.it('Removes item from the menu', () => {
+        bobsMenu = new Menu('bobs bagels');
+        bagel = new Bagel();
+        bagel2 = new Bagel('BGLO');
+        bagel4 = new Bagel('BGLO');
+
+        bobsMenu.addToMenu(bagel);
+        bobsMenu.addToMenu(bagel2);
+        test.expect(bobsMenu.removeFromMenu(bagel4).length).toEqual(1);
+    })
+
+    test.it('Cannot remove item.SKU that is not in the menu', () => {
+        bagel3 = new Bagel('BGLO');
+        test.expect(bobsMenu.removeFromMenu(bagel3)).toEqual(`Cannot remove item that is not on the menu`);
     })
 })

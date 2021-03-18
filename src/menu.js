@@ -8,15 +8,28 @@ class Menu {
     }
 
     addToMenu(item) {
-        let includeCheck = 0
-        for(let i = 0; i < this._menuItems.length; i++) {
-            if(this._menuItems[i].SKU === item.SKU) includeCheck ++;
-        }
+        let includeCheck = this.checkInMenu(item);
         if(includeCheck) return `Menu already contains bagel type ${item.SKU}`;
         this._menuItems.push(item);
         return this._menuItems;
     }
 
+    removeFromMenu(item) {
+        let includeCheck = this.checkInMenu(item);
+        if(includeCheck) {
+            this._menuItems.splice(this._menuItems.indexOf(item), 1)
+            return this._menuItems;
+        }
+        return `Cannot remove item that is not on the menu`;
+    }
+
+    checkInMenu(item) {
+        let includeCheck = 0
+        for(let i = 0; i < this._menuItems.length; i++) {
+            if(this._menuItems[i].SKU === item.SKU) includeCheck ++;
+        }
+        return includeCheck;
+    }
 
     printMenu() {
         if(this._menuItems.length === 0){
