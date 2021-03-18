@@ -1,5 +1,5 @@
 class Bagel {
-    constructor(SKU) {
+    constructor(SKU = 'BGLP') {
         if(SKU === 'BGLO') {
             this._SKU = SKU;
             this._name = 'Onion';

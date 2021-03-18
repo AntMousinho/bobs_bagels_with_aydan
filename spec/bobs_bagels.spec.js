@@ -5,11 +5,11 @@ const Menu = require('../src/menu');
 
 const test = require('mousinho-testlibrary-mse-2103/src/library');
 
-let bagel, bagel2, bagel3, bagel4, userBasket, result;
+let bagel, bagel2, bagel3, bagel4, userBasket, result, bobsMenu;
 
 // Part 1.1
 // Set up
-bagel = new Bagel('test1', 1.50);
+bagel = new Bagel();
 userBasket = new Basket()
 console.log('Test 1.1: Adding bagel to userBasket');
 
@@ -24,7 +24,7 @@ console.log(result);
 
 //Part 1.2
 // Set up
-bagel = new Bagel('wholegrain', 2.00);
+bagel = new Bagel();
 userBasket = new Basket();
 console.log('Test 1.2: Removing bagel from userBasket');
 
@@ -40,8 +40,8 @@ console.log(result);
 
 //Part 2.1
 //Set up
-bagel2 = new Bagel('cheese', 3.00);
-bagel3 = new Bagel('onion', 2.50);
+bagel2 = new Bagel();
+bagel3 = new Bagel();
 userBasket = new Basket();
 console.log('Test 2.1: Not able to add more to the basket when it is full')
 
@@ -59,7 +59,7 @@ console.log(result);
 //Part 2.2
 //Set up
 userBasket = new Basket(3);
-bagel4 = new Bagel('smoked salmon', 13);
+bagel4 = new Bagel();
 console.log("Test 2.2: Creating a bag that can hold more items")
 
 //Execute
@@ -127,17 +127,5 @@ userBasket.addItem(bagel4);
 userBasket.removeItem(bagel3);
 
 //Verify
-result = assertEquals(userBasket.subtotal, 18);
+result = assertEquals(userBasket.subtotal, 1.17);
 console.log(result);
-
-
-test.describe(`Testing the Menu.addItem() function`, () => {
-    test.it('check that an item has been added', () => {
-        let bobsMenu = new Menu('bobs bagels');
-        bagel = new Bagel('BGLO');
-
-        result = bobsMenu.addToMenu(bagel);
-
-        test.expect(result.length).toEqual(1);
-    })
-})
