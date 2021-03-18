@@ -21,7 +21,6 @@ result = assertEquals(userBasket.items[0], bagel);
 console.log(result);
 
 
-
 //Part 1.2
 // Set up
 bagel = new Bagel();
