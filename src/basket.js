@@ -2,47 +2,32 @@ class Basket {
     constructor(capacity = 2) {
         this._items = []
         this._capacity = capacity;
-        this._subtotal = 0;
+    }
+
+    get capacity() {
+        return this._capacity;
     }
 
     get items() {
         return this._items;
     }
 
-    get subtotal() {
-        return this._subtotal;
-    }
-
     isFull() {
-        return this.items.length >= this._capacity;
+        return this._items.length >= this._capacity;
     }
-
-
 
     addItem(item) {
-        if(!this.isFull()) {
-            if(this._items.includes(item)) {
-                return `${item.name} is already in basket, cannot be added again`
-            }else {
-                this._items.push(item);
-                this._subtotal += item.price;
-                return `${item.name} - ${item.price} - added to basket`;
-            }
-        } else {
-            return `Cannot add ${item.name}, basket is full`;
-        }
+        if(this.isFull()) return `Cannot add item, basket is full`;
+        if(this._items.includes(item)) return `Cannot add item that is already in the basket`
+        this._items.push(item);
+        return this._items;
     }
 
     removeItem(item) {
-        if (this.items.includes(item)) {
-            this._items.splice(this.items.indexOf(item), 1);
-            this._subtotal -= item.price;
-            return `${item.name} removed from basket`;
-        } else {
-            return `${item.name} not found in basket`;
-        }
+        if(!this._items.includes(item)) return `Cannot remove an item that is not in the basket`
+        this._items.splice(this._items.indexOf(item), 1);
+        return this._items;
     }
-
 }
 
 module.exports = Basket;

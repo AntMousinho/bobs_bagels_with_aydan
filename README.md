@@ -1,44 +1,47 @@
 ```
+# Part 1
+As a member of the public
+So I can order a bagel when I want to
+I'd like to add an item to my basket
+
+As a member of the public,
+So that I can change my order
+I'd like to remove an item from my basket
+```
+```
+# Part 2
+As a member of the public,
+So that I can not overfill my small bagel basket
+I'd like to know when my basket is full when I try adding an item beyond my basket capacity.
+
+As a Bob's Bagels manager,
+So that I can record more sales
+I’d like to create baskets with larger capacity when I need to.
+
+As a member of the public
+So that I can maintain my sanity
+I'd like to know if I try to remove an item that doesn't exist in my basket. In the same way, I want to know if I try to add an item with the same ID already in my basket.
+```
+```
+# Part 3
+As a member of the public,
+So that I can know how much my bagels are,
+I’d like to see the price of each item before I add it to my basket.
+
 As a member of the public,
 So that I can prepare to pay
 When I go to checkout I'd like to know the total sum of the bagels in my basket
 ```
 
-
-| Object | Properties | Message | Context | output |
-| ------ | ---------- | ------- | ------- | ------ |
-| Basket | subTotal @Int | checkout() | returns the subtotal | @Int subtotal |
-|  |  |  | what if subtotal is negative | throw error in consructor? |
-|  |  | addItem() | Need to add bagel price to subtotal | @String |
-|  |  | removeItem() | Subtract the price of the bagel from subtotal |  |
-
-
-
-
-```
-In a normal supermarket, things are identified using Stock Keeping Units, or SKUs.
-
-In Bob's Bagels, we'll use the first 3 letters of the product with an extra letter for the variant. For example: an 'everything bagel' has a SKU of BGLE.
-
-Our goods are priced individually. In addition, some items are multi-priced: buy n of them, and they'll cost you y pounds.
-```
-### Bob's Bagels Inventory
-| SKU	| Name	| Variant	| Price	| Special offers |
-| ----- | ----- | --------- | ----- | -------------- |
-| BGLO	| Bagel | Onion	| .49	| 6 for 2.49 |
-| BGLP	| Bagel	| Plain	| .39	| 12 for 3.99 |
-| BGLE	| Bagel	| Everything	| .49	| 6 for 2.49 |
-| COF	| Coffee	|	| .99	| Coffee & Plain Bagel for 1.25 |
-
-
-
-Update and extend your program to handle these orders at Bob's Bagels.
-
-Start with extracting useful stories and a functional domain model that represents these requirements.
-
-2x BGLO  = 0.98
-12x BGLP = 3.99
-6x BGLE  = 2.49
-3x COF   = 2.97
-           ----
-          10.43
+| Object | Properties | Message | Context | Output | Done |
+| - | - | - | - | - | - |
+| Basket | @Array items | add(item) | not full, item is added | @Array[@item] | ✅ |
+|  | @Int Capacity |  | isFull = true | @String 'Cannot add item, basket is full' | ✅ |
+|  |  |  | item already in basket | @String 'Cannot add item, already in basket' | ✅ |
+|  |  | remove(item) | item is in basket | @Array[@item] | ✅ |
+|  |  |  | item is not in basket | @String 'Cannot remove item that is not in the basket' | ✅ |
+|  |  | isFull() | the basket is full | @Boolean true | ✅ |
+|  |  |  | the basket is not full | @Boolean false | ✅ |
+| Item | @int id |  | get id() | @int | ✅ |
+|  | @Number price |  | get Price() | @number | ✅ |
+| Checkout | @basket basket | total() | sums price of items in basket | @number | ✅ |
