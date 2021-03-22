@@ -1,3 +1,27 @@
+# Bobs Bagels - Antony Mousinho
+An exercise to practice test driven development. Following and creating user stories, drawing up a domain model and writing unit tests as the basis to the programming. Also practice using classes that maintain high cohesion and low coupling.
+
+<p>&nbsp;</p>
+
+## Quick Start
+```
+$ git clone git@github.com:AntMousinho/bobs_bagels.git
+npm install
+```
+
+<p>&nbsp;</p>
+
+## To run tests
+```
+$ node specRunner.js
+# or
+$ npm test
+```
+
+<p>&nbsp;</p>
+
+## User Stories
+
 ```
 # Part 1
 As a member of the public
@@ -33,6 +57,9 @@ So that I can prepare to pay
 When I go to checkout I'd like to know the total sum of the bagels in my basket
 ```
 
+<p>&nbsp;</p>
+
+## Domain Model
 | Object | Properties | Message | Context | Output | Done |
 | - | - | - | - | - | - |
 | Basket | @Array items | add(item) | not full, item is added | @Array[@item] | ✅ |
@@ -45,3 +72,7 @@ When I go to checkout I'd like to know the total sum of the bagels in my basket
 | Item | @int id |  | get id() | @int | ✅ |
 |  | @Number price |  | get Price() | @number | ✅ |
 | Checkout | @basket basket | total() | sums price of items in basket | @number | ✅ |
+
+<p>&nbsp;</p>
+
+## Extension 1

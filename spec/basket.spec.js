@@ -2,7 +2,7 @@ const test = require('mousinho-testlibrary-mse-2103/src/library');
 const Basket = require('../src/basket');
 const Item = require('../src/item');
 
-let userBasket, item1, item2, item3;
+let userBasket, item1, item2, item3, deal1;
 
 test.describe('Adding an item to the basket', () => {
     test.it('An item has been added to basket', () => {
@@ -83,4 +83,10 @@ test.describe('Basket capacity and isFull tests', () => {
         userBasket.addItem(item2);
         test.expect(userBasket.isFull()).toEqual(true);
     })
+})
+
+test.describe('Adding deals to the basket', () => {
+    userBasket = new Basket();
+    deal1 = new Item('DLOB', 2.49);
+    test.expect(userBasket.addItem(deal1)[0]).toEqual(deal1);
 })
