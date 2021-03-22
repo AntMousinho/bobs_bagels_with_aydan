@@ -6,7 +6,9 @@
   "description": "```\r # Part 1\r As a member of the public\r So I can order a bagel when I want to\r I'd like to add an item to my basket",
   "version": "1.0.0",
   "main": "specRunner.js",
-  "devDependencies": {},
+  "devDependencies": {
+    "jasmine": "^3.7.0"
+  },
   "scripts": {
     "test": "node specRunner.js"
   },

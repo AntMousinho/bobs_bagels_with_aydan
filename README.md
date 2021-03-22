@@ -76,3 +76,6 @@ When I go to checkout I'd like to know the total sum of the bagels in my basket
 <p>&nbsp;</p>
 
 ## Extension 1
+| Object | Properties | Message | Context | Output | Done |
+| - | - | - | - | - | - |
+| checkout |  | checkDeals | if deal is found | @object order summary with number of  |  |
