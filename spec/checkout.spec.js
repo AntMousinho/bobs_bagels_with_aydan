@@ -119,3 +119,41 @@ describe('Checking deals and changing them for summary', () => {
         expect(checkout.total()).toEqual(3.47);
     })
 })
+
+describe('testing that the recipt prints correctly', () => {
+    it('first example of a recipt', () => {
+        userBasket = new Basket(10);
+        deal1 = new Item('DLPB', 3.99);
+        deal2 = new Item('DLEB', 2.49);
+        item1 = new Item('BGLO', 0.49);
+        item2 = new Item('BGLO', 0.49);
+        item3 = new Item('COF', 0.99);
+        item4 = new Item('COF', 0.99);
+        item5 = new Item('COF', 0.99);
+        userBasket.addItem(deal1);
+        userBasket.addItem(deal2);
+        userBasket.addItem(item1);
+        userBasket.addItem(item2);
+        userBasket.addItem(item3);
+        userBasket.addItem(item4);
+        userBasket.addItem(item5);
+        checkout = new Checkout(userBasket);
+        let output =(`  ~~~ bobs bagels ~~~   
+
+            2021-03-16 21:38:44   
+            
+         -----------------------------
+         
+         Onion Bagel         2   £0.98
+         Plain Bagel         12  £3.99
+         Everything Bagel    6   £2.49
+         Coffee              3   £2.97
+         
+         -----------------------------
+         Total                   £10.43
+         
+            Thank you   
+            for your order!   `)
+        expect(checkout.printstatement()).toEqual(output);
+    })
+})

@@ -1,10 +1,10 @@
-const bobsPrices = require('./bobsPrices');
+const bobsmenu = require('./bobsPrices');
 const Item = require('./item');
 const Basket = require('./basket');
 
 
 class Checkout {
-    constructor(basket, prices = bobsPrices) {
+    constructor(basket, prices = bobsmenu) {
         this._basket = basket;
         this._prices = prices;
     }
@@ -14,8 +14,9 @@ class Checkout {
         let arrayDeals = Object.entries(dealsObject);
         let subtotal = 0;
         for(let i = 0; i < arrayDeals.length; i++) {
-            subtotal += this._prices[arrayDeals[i][0]] * arrayDeals[i][1];
+            subtotal += this._prices[arrayDeals[i][0]].Price * arrayDeals[i][1];
         }
+
         return Math.round(subtotal * 100) / 100;
     }
 
@@ -52,6 +53,22 @@ class Checkout {
         }
         return amountObject;
     }    
+//     printstatement(){
+//         let finalprint = {}
+//         for(let i = 0; i < this.basket; i++) {
+//             if(finalprint.includes(this._basket.items[i].id)){
+//                 finalprint[this._prices[this._basket.items[i].id].name].price += this._prices[this._basket.items[i].id].Price
+//                 finalprint[this._prices[this._basket.items[i].id].name].amount += this._prices[this._basket.items[i].id].amount
+//             }else{
+//                 finalprint[this._prices[this._basket.items[i].id].name] ={
+//                     amount : this._prices[this._basket.items[i].id].amount,
+//                     price : this._prices[this._basket.items[i].id].Price
+//                 }
+//             }
+//             }
+//     console.log(finalprint)
+//     return finalprint
+//     }   
 }
 
 module.exports = Checkout;
